@@ -72,7 +72,7 @@ function Navigation() {
                 My <br /> Items
               </Link>
               <Link to="/Login" className="navLink mt-2">
-                Login
+                Login /<br /> Signup
               </Link>
             </div>
           </Col>

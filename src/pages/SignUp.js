@@ -1,10 +1,20 @@
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Image from "react-bootstrap/esm/Image";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useSignup } from "../components/customHooks/useSignup";
 const SignUp = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { signup, isLoading, error } = useSignup();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await signup(email, password);
+  };
+
   return (
     <Container className="loginContainer">
       <Row>
@@ -19,39 +29,47 @@ const SignUp = () => {
             Become an Elden Lord and explore the Land Between. <br /> Greatness
             awaits
           </p>
-          <form action="">
+          <form onSubmit={handleSubmit}>
             <fieldset>
-              <legend>Login</legend>
+              <legend>Signup</legend>
 
-              <input
-                type="text"
-                placeholder="Username"
-                className="loginInput"
-                required
-              />
               <input
                 type="email"
                 placeholder="Email"
                 className="loginInput"
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
                 required
               />
               <input
                 type="password"
                 placeholder="Password"
                 className="loginInput"
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
                 required
               />
             </fieldset>
 
-            <Button variant="outline-light" className="m-5 loginButton ">
-              Login
+            <Button
+              variant="outline-light"
+              className="m-5 loginButton"
+              type="submit"
+            >
+              SignUp
             </Button>
           </form>
 
+          {error && (
+            <div className="fs-5 p-3 text-danger border border-danger">
+              {error}
+            </div>
+          )}
+
           <p className="fs-5 text-light text-center p-5">
-            Not a member yet?{" "}
-            <Link to="/Sign-Up" className="signLink">
-              Sign-up
+            Already a member?{" "}
+            <Link to="/Login" className="signLink">
+              Login
             </Link>
           </p>
         </Col>
