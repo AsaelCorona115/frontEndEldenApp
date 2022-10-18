@@ -1,18 +1,18 @@
 import { useAuthContext } from "./useAuthContext";
 import { useState } from "react";
 
-export const useSignup = () => {
+export const useLogin = () => {
   const [isLoading, setIsLoading] = useState(null);
   const [error, setError] = useState(null);
   const { dispatch } = useAuthContext();
 
-  const signup = async (email, password) => {
+  const login = async (email, password) => {
     //set Loading to true and error to null
     setIsLoading(true);
     setError(null);
     //fetch
     const response = await fetch(
-      "https://eldenappbackend.herokuapp.com/users/signup",
+      "https://eldenappbackend.herokuapp.com/users/login",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -35,5 +35,5 @@ export const useSignup = () => {
       setIsLoading(false);
     }
   };
-  return { signup, isLoading, error };
+  return { login, isLoading, error };
 };

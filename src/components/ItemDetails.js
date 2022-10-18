@@ -36,7 +36,9 @@ const ItemDetails = (props) => {
 
   useEffect(() => {
     const fetchSavedItems = async () => {
-      const response = await fetch(`https://eldenappbackend.herokuapp.com/`);
+      const response = await fetch(
+        `https://eldenappbackend.herokuapp.com/items`
+      );
       const json = await response.json();
       if (response.ok) {
         dispatch({ type: "SET_ITEMS", payload: json });
@@ -137,13 +139,16 @@ const ItemDetails = (props) => {
         properties: item,
       };
 
-      const response = await fetch("https://eldenappbackend.herokuapp.com/", {
-        method: "POST",
-        body: JSON.stringify(newItem),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        "https://eldenappbackend.herokuapp.com/items",
+        {
+          method: "POST",
+          body: JSON.stringify(newItem),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       const json = await response.json();
       if (response.ok) {
         dispatch({ type: "SAVE_ITEM", payload: json });
@@ -156,7 +161,7 @@ const ItemDetails = (props) => {
 
   const handleDelete = async () => {
     const response = await fetch(
-      `https://eldenappbackend.herokuapp.com/${databaseId}`,
+      `https://eldenappbackend.herokuapp.com/items/${databaseId}`,
       {
         method: "DELETE",
       }

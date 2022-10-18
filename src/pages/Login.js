@@ -4,15 +4,17 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useLogin } from "../components/customHooks/useLogin";
 const Login = () => {
   //States
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { login, isLoading, error } = useLogin();
 
   //handlers
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(email, password);
+    await login(email, password);
   };
 
   return (
@@ -56,10 +58,15 @@ const Login = () => {
               variant="outline-light"
               className="m-5 loginButton "
               type="submit"
+              disabled={isLoading}
             >
               Login
             </Button>
           </form>
+
+          {error && (
+            <div className="fs-4 text-danger border border-danger">{error}</div>
+          )}
 
           <p className="fs-5 text-light text-center p-5">
             Not a member yet?{" "}
