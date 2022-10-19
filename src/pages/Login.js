@@ -2,6 +2,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
+import Image from "react-bootstrap/Image";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useLogin } from "../components/customHooks/useLogin";
@@ -19,6 +20,34 @@ const Login = () => {
 
   return (
     <Container className="loginContainer">
+      {/* Banner, Intro Row */}
+      <Row className="mt-sm-5">
+        <Col
+          className="d-flex align-items-center py-5"
+          xs={{ span: 12, order: 2 }}
+          md={{ span: 4, order: 1 }}
+        >
+          <Image
+            src="https://pbs.twimg.com/media/FGo2ktmWYAQN2px?format=jpg&name=4096x4096"
+            fluid
+          ></Image>
+        </Col>
+        <Col
+          xs={{ span: 12, order: 1 }}
+          md={{ span: 8, order: 2 }}
+          className="py-5 "
+        >
+          <h1 className="HeaderMainText display-4">Rise tarnished</h1>
+
+          <p className="fs-3  mt-4 text-light">
+            And be guided by grace to become an Elden Lord in the Lands Between.
+            Follow the index of Sir Gideon Ofnir, the All knowing to collect all
+            items, explore every corner of these lands and come to meet any ally
+            or adversary these lands have to offer. Let the guidance of grace be
+            brought to the Tarnished.
+          </p>
+        </Col>
+      </Row>
       <Row>
         <Col
           className="text-center"
@@ -26,11 +55,6 @@ const Login = () => {
           sm={{ span: 8, offset: 2 }}
           lg={{ span: 6, offset: 3 }}
         >
-          <h1 className="HeaderMainText m">Rise Tarnished</h1>
-          <p className="fs-3 text-light generalParagraph p-5">
-            Become an Elden Lord and explore the <br /> Lands Between. <br />{" "}
-            Greatness awaits
-          </p>
           <form action="" onSubmit={handleSubmit}>
             <fieldset>
               <legend>Login</legend>
