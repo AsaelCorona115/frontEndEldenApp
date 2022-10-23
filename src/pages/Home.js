@@ -2,13 +2,40 @@ import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
 import { useState, useEffect } from "react";
-import Image from "react-bootstrap/esm/Image";
-import Button from "react-bootstrap/esm/Button";
-
+import { useAuthContext } from "../components/customHooks/useAuthContext";
+import { useSavedItemsContext } from "../components/customHooks/useSavedItemContext";
 //Components
 import ItemTypeCard from "../components/ItemTypeCard";
 
 const Home = () => {
+  const { dispatch } = useSavedItemsContext();
+  const { user } = useAuthContext();
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchSavedItems = async () => {
+      setLoading(true);
+      setError(null);
+      const response = await fetch(
+        `https://eldenappbackend.herokuapp.com/items/`,
+        {
+          headers: {
+            authorization: `bearer ${user.token}`,
+          },
+        }
+      );
+      const json = await response.json();
+      if (response.ok) {
+        setLoading(false);
+        setError(null);
+        dispatch({ type: "SET_ITEMS", payload: json });
+      }
+    };
+    if (user) {
+      fetchSavedItems();
+    }
+  }, [dispatch]);
   const objectTypes = [
     {
       title: "Ammos",
@@ -101,8 +128,6 @@ const Home = () => {
       key: 15,
     },
   ];
-
-  const [itemType, setItemType] = useState(null);
 
   const Home = () => {
     return (

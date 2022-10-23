@@ -28,7 +28,6 @@ const ItemsPage = (props) => {
   const [mainCardShow, setMainCardShow] = useState("d-none");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [isItemSaved, setIsItemSaved] = useState("");
 
   useEffect(() => {
     const fetchSavedItems = async () => {

@@ -1,7 +1,11 @@
 .App{
   background-color: black;
+  font-family: "Marcellus SC"
 }
 
+a{
+  text-decoration: none;
+}
 .offcanvas-header,
 .offCanvasBody{
  background-color: black;
@@ -275,3 +279,16 @@ legend{
 .deleteButton{
   z-index: 5;
 }
+
+.bi-bookmark-check{
+  font-size: 50px;
+}
+
+.titleScreen{
+  height: 70vh;
+}
+
+.titleImage{
+  width: 100%;
+}
+
