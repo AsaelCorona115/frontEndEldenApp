@@ -19,6 +19,7 @@ export const savedItemsReducer = (state, action) => {
 
 export const SavedItemsContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(savedItemsReducer, { savedItems: null });
+
   return (
     <SavedItemsContext.Provider value={{ ...state, dispatch }}>
       {children}

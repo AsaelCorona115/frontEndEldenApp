@@ -21,6 +21,7 @@ function Navigation() {
 
   //handleLogout
   const handleLogout = () => {
+    setShow(false);
     logout();
   };
   return (
