@@ -26,6 +26,7 @@ const Login = () => {
 
   //ref for animation
   const loginRef = useRef();
+  const tl = useRef();
 
   //handlers
   const handleSubmit = async (e) => {
@@ -36,28 +37,12 @@ const Login = () => {
   //animations
   useEffect(() => {
     let animationContext = gsap.context(() => {
-      gsap.fromTo(
-        ".titleImage",
+      tl.current = gsap.timeline();
+
+      tl.current.fromTo(
+        ".titleImage, .continue",
         { duration: "2", opacity: "40%", yoyo: true, repeat: -1 },
         { duration: "2", opacity: "100%", yoyo: true, repeat: -1 }
-      );
-      gsap.fromTo(
-        ".continue",
-        {
-          duration: "2",
-          opacity: "0%",
-          repeat: -1,
-          yoyo: true,
-          y: -45,
-          scale: 2,
-        },
-        {
-          duration: "2",
-          opacity: "80%",
-
-          repeat: -1,
-          yoyo: true,
-        }
       );
     }, loginRef);
 
@@ -80,8 +65,8 @@ const Login = () => {
 
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="125"
-            height="23"
+            width="150"
+            height="40"
             viewBox="0 0 125 23"
             fill="none"
             className="continue"
@@ -190,6 +175,27 @@ const Login = () => {
               <Link to="/SignUp" className="signLink">
                 Sign-up
               </Link>
+            </p>
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={12} className="text-center text-light">
+            {" "}
+            <p>
+              Hello! My name is Victor Corona and I developed this site. <br />{" "}
+              This is just a passion project of mine to practice my MERN stack
+              abilities. <br />
+              Feel free to use a dummy email in your credentials to test the
+              site, I delete any information from the database periodically and
+              I don't have access to any passwords you decide to create.
+              <br /> Feel free to check my{" "}
+              <a href="https://github.com/AsaelCorona115" target="_blank">
+                {" "}
+                GitHub{" "}
+              </a>
+              or contact me with any ideas on my email: victor_cg115@hotmail.com{" "}
+              <br />
+              Good luck tarnished!
             </p>
           </Col>
         </Row>

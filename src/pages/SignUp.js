@@ -97,6 +97,27 @@ const SignUp = () => {
           </p>
         </Col>
       </Row>
+      <Row>
+        <Col xs={12} className="text-center text-light">
+          {" "}
+          <p>
+            Hello! My name is Victor Corona and I developed this site. <br />{" "}
+            This is just a passion project of mine to practice my MERN stack
+            abilities. <br />
+            Feel free to use a dummy email in your credentials to test the site,
+            I delete any information from the database periodically and I don't
+            have access to any passwords you decide to create.
+            <br /> Feel free to check my{" "}
+            <a href="https://github.com/AsaelCorona115" target="_blank">
+              {" "}
+              GitHub{" "}
+            </a>
+            or contact me with any ideas on my email: victor_cg115@hotmail.com{" "}
+            <br />
+            Good luck tarnished!
+          </p>
+        </Col>
+      </Row>
     </Container>
   );
 };

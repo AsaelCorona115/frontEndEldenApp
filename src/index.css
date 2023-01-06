@@ -287,9 +287,14 @@ legend{
 
 .titleScreen{
   height: 70vh;
+  max-height: 100%;
 }
 
 .titleImage{
   width: 90%;
 }
 
+svg.continue{
+  position: relative;
+  top: -55px;
+}
